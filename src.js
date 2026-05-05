@@ -53,14 +53,45 @@ function displayMovie(movies) {
     container.innerHTML += `
       <div class="flex flex-col group cursor-pointer">
 
-        <div class="aspect-[2/3] w-full border-[3px] border-white overflow-hidden rounded-sm transition group-hover:scale-105">
+        <div class="relative aspect-[2/3] w-full border-2 border-transparent overflow-hidden rounded-lg 
+                    transition-all duration-300 group-hover:scale-105 group-hover:border-blue-600 group-hover:shadow-lg group-hover:shadow-green-500/30"">
 
           <img 
             src="${movie.medium_cover_image}" 
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           >
+          <div class="absolute inset-0 bg-black/70 opacity-0 
+                      flex flex-col justify-center items-center gap-2
+                      transition duration-300 group-hover:opacity-100">
+
+            <!-- Rating -->
+            <div class="flex flex-col items-center  text-white-400 font-bold text-lg">
+              <span class="text-xl color-green-600"><i class="fa-solid fa-star text-blue-600"></i></span>
+               ${movie.rating}/10
+            </div>
+
+            <!-- Genres -->
+            <div class="flex flex-wrap justify-center gap-1 px-2">
+              ${movie.genres
+                ? movie.genres.map(g => `
+                  <span class="text-xs px-2 py-1 border border-blue-600 text-blue-600 rounded-full">
+                    ${g}
+                  </span>
+                `).join('')
+                : ''}
+            </div>
+
+            <!-- Button -->
+            <button class="mt-2 px-3 py-1 text-sm rounded-full border border-blue-600 text-white-400 
+                           transition hover:bg-blue-600 hover:text-black">
+              View Details
+            </button>
+
+          </div>
 
         </div>
+
+      
 
         <div class="mt-2">
           <h3 class="text-white text-sm font-bold truncate">
