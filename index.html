@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>FilmFusion</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-black text-white">
+
+  <!-- HEADER -->
+  <header class=" fixed top-0 left-0 w-full  z-50 flex items-center justify-between px-8 py-2 bg-[#111] ">
+
+    <!-- Logo -->
+    <div>
+      <h1 class="text-xl font-bold">
+        🎬 <span class="text-blue-600">Film</span>Fusion
+      </h1>
+      <p class="text-xs text-gray-400">HD movies at the smallest file size.</p>
+    </div>
+
+    <!-- Search -->
+    <div class="relative w-80">
+
+      <i class="fa-solid fa-magnifying-glass-arrow-right absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+      <input type="text" placeholder="Quick search"
+        class="bg-[#1e1e1e] pl-10 pr-4 py-2 rounded-full outline-none w-full text-white">
+
+    </div>
+    <!-- Menu -->
+    <nav class="space-x-6 text-sm">
+      <a href="#" class="hover:text-white text-gray-300">Home</a>
+      <a href="#" class="text-blue-600">4K</a>
+      <a href="#" class="hover:text-white text-gray-300">Trending</a>
+      <a href="#" class="hover:text-white text-gray-300">Browse Movies</a>
+    </nav>
+
+    <!-- Buttons -->
+    <div class="space-x-2">
+      <button class="border border-gray-600 px-4 py-1 rounded-full">
+        Login
+      </button>
+      <button class="bg-blue-600 text-black px-4 py-1 rounded-full font-semibold">
+        Register
+      </button>
+    </div>
+
+  </header>
+  <!-- <hr class="bg-green-400"> -->
+  <!-- SEARCH SECTION -->
+  <section class="flex justify-center bg-[#111] py-10 mt-12">
+
+    <div class="w-full max-w-5xl">
+
+      <h3 class="text-gray-400 mb-2">Search Term:</h3>
+
+      <!-- Search Bar -->
+      <div class="flex mb-6 rounded-[2px]">
+        <input type="text" placeholder="Enter movie name..." class="flex-1 bg-[#222] px-4 py-3 outline-none rounded-md">
+        <button class="ml-3 bg-blue-600 px-6 py-3 font-semibold rounded">
+          Search
+        </button>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-5 ">
+
+        <!-- Reusable Filter -->
+        <div class="flex flex-col w-32  ">
+          <label class="text-xs text-gray-400 mb-1">Quality:</label>
+          <select class="bg-[#222] px-3 py-2  rounded-[5px]">
+            <option>All</option>
+            <option>720p</option>
+            <option>1080p</option>
+            <option>4K</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col w-32">
+          <label class="text-xs text-gray-400 mb-1">Genre:</label>
+          <select class="bg-[#222] px-3 py-2 rounded-[5px]">
+            <option>All</option>
+            <option>Action</option>
+            <option>Drama</option>
+            <option>Comedy</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col w-32 ">
+          <label class="text-xs text-gray-400 mb-1">Rating:</label>
+          <select class="bg-[#222] px-3 py-2 rounded-[5px]">
+            <option>All</option>
+            <option>9+</option>
+            <option>8+</option>
+            <option>7+</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col w-32">
+          <label class="text-xs text-gray-400 mb-1">Year:</label>
+          <select class="bg-[#222] px-3 py-2  rounded-[5px]">
+            <option>All</option>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col w-32">
+          <label class="text-xs text-gray-400 mb-1">Language:</label>
+          <select class="bg-[#222] px-3 py-2  rounded-[5px]">
+            <option>All</option>
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Urdu</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col w-32">
+          <label class="text-xs text-gray-400 mb-1">Order By:</label>
+          <select class="bg-[#222] px-3 py-2  rounded-[5px]">
+            <option>Latest</option>
+            <option>Popular</option>
+            <option>Rating</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="flex flex-col items-center justify-center p-8 bg-[#171717] min-h-16">
+    <!-- Title -->
+    <h1 class="mb-5 mt-1 text-2xl font-semibold text-blue-600">FilmFusion Movies</h1>
+
+    <!-- Pagination Container -->
+    <div class="flex items-center space-x-1" aria-label="Pagination">
+
+      <!-- Active Page -->
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-blue-600 border border-[#6AC045] rounded hover:bg-blue-600 transition-colors">
+        1
+      </a>
+
+      <!-- Inactive Pages -->
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        2
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        3
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        4
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        5
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        6
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        7
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        8
+      </a>
+
+      <!-- Ellipsis -->
+      <span class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded cursor-default">
+        ...
+      </span>
+
+      <!-- Next Button -->
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        Next »
+      </a>
+
+    </div>
+    <div class="min-h-screen bg-[#171717] p-8 font-sans flex justify-center">
+
+      <div class="w-full max-w-7xl">
+
+        <!-- Grid Container -->
+        <div id="movies" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10">
+
+          <!-- Movie Card -->
+     
+
+          <!-- Add more cards here -->
+    
+
+        
+      
+    
+
+        </div>
+
+      </div>
+
+    </div>
+     <div class="flex items-center space-x-1" aria-label="Pagination">
+
+      <!-- Active Page -->
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-blue-600 border border-[#6AC045] rounded hover:bg-blue-600 transition-colors">
+        1
+      </a>
+
+      <!-- Inactive Pages -->
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        2
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        3
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        4
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        5
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        6
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        7
+      </a>
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        8
+      </a>
+
+      <!-- Ellipsis -->
+      <span class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded cursor-default">
+        ...
+      </span>
+
+      <!-- Next Button -->
+      <a href="#"
+        class="px-4 py-2 text-sm font-bold text-white bg-transparent border border-white/10 rounded hover:bg-white/5 transition-colors">
+        Next »
+      </a>
+
+    </div>
+<footer class="bg-black text-gray-400 text-sm py-6 mt-10 border-t border-gray-800">
+
+  <div class="max-w-6xl mx-auto text-center space-y-3">
+
+    <!-- Links -->
+    <div class="flex flex-wrap justify-center gap-2">
+      <span>YTS © 2011 - 2026</span>
+      <span>-</span>
+      <a href="#" class="hover:text-white">Blog</a>
+      <span>-</span>
+      <a href="#" class="hover:text-white">DMCA</a>
+      <span>-</span>
+      <a href="#" class="hover:text-white">API</a>
+      <span>-</span>
+      <a href="#" class="hover:text-white">RSS</a>
+      <span>-</span>
+      <a href="#" class="hover:text-white">Contact</a>
+      <span>-</span>
+      <a href="#" class="hover:text-white">Browse Movies</a>
+      <span>-</span>
+      <a href="#" class="hover:text-white">Requests</a>
+      <span>-</span
+  </div>
+  <script src="src.js"></script>
+</body>
+
+</html>
