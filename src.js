@@ -17,7 +17,7 @@
 // async function displayMovie() {
 
 //   const moviesData = await getMovieList();
-  
+
 //   const container = document.getElementById("movies");
 //   const title = moviesData.movies[0].title_long;
 //   console.log(title);
@@ -28,14 +28,47 @@
 // displayMovie();
 
 
-async function getMovieList() {
-  const url = "https://movies-api.accel.li/api/v2/list_movies.json";
+async function getMovieList(
+  query_term = "",
+  quality = "",
+  genre = "",
+  rating = "",
+  year = "",
+
+) {
+  const url = `https://movies-api.accel.li/api/v2/list_movies.json?` +
+    `query_term=${query_term}` +
+    `&quality=${quality}` +
+    `&genre=${genre}` +
+    `&minimum_rating=${rating}` +
+    `&year=${year}`;
 
   try {
     const response = await fetch(url);
     const resJson = await response.json();
 
-    const movies = resJson.data.movies;
+    let movies = resJson.data.movies || [];
+    
+    if (year) {
+
+      if (year.includes("-")) {
+
+        const [minYear, maxYear] = year.split("-").map(Number);
+
+        movies = movies.filter(movie =>
+          movie.year >= minYear && movie.year <= maxYear
+        );
+
+      } else {
+
+        movies = movies.filter(movie =>
+          movie.year == year
+        );
+
+      }
+    }
+    // console.log(movies);
+
 
     displayMovie(movies); // 👈 call display here
 
@@ -73,12 +106,12 @@ function displayMovie(movies) {
             <!-- Genres -->
             <div class="flex flex-wrap justify-center gap-1 px-2">
               ${movie.genres
-                ? movie.genres.map(g => `
+        ? movie.genres.map(g => `
                   <span class="text-xs px-2 py-1 border border-blue-600 text-blue-600 rounded-full">
                     ${g}
                   </span>
                 `).join('')
-                : ''}
+        : ''}
             </div>
 
             <!-- Button -->
@@ -107,7 +140,73 @@ function displayMovie(movies) {
   });
 }
 
-// 👉 Only call this
+
+// Only call this
+// getMovieList();
+
+
+
+
+document.getElementById("searchBtn").addEventListener("click", function () {
+
+  const searchValue = document.getElementById("searchInput").value.toLowerCase();
+
+  const qualityValue = document.getElementById("qualityFilter").value;
+
+  const genreValue = document.getElementById("genreFilter").value;
+
+  const ratingValue = document.getElementById("ratingFilter").value;
+
+  const yearValue = document.getElementById("yearFilter").value;
+
+  
+ 
+
+
+  getMovieList(
+    searchValue,
+    qualityValue,
+    genreValue,
+    ratingValue,
+    yearValue
+  );
+
+});
+
+// filter change listener 
+
+const filters = document.querySelectorAll("select");
+
+filters.forEach(filter => {
+
+  filter.addEventListener("change", function () {
+
+    const searchValue = document.getElementById("searchInput").value;
+
+    const qualityValue = document.getElementById("qualityFilter").value;
+
+    const genreValue = document.getElementById("genreFilter").value;
+
+    const ratingValue = document.getElementById("ratingFilter").value;
+
+    const yearValue = document.getElementById("yearFilter").value;
+
+   
+
+
+
+    getMovieList(
+      searchValue,
+      qualityValue,
+      genreValue,
+      ratingValue,
+      yearValue,
+  
+
+    );
+
+  });
+
+});
+
 getMovieList();
-
-
