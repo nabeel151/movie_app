@@ -133,13 +133,11 @@ function displayMovie(movies) {
 
             </div>
 
-            <button 
-                    onclick="openMovieDetails('${movie.id}')"
-   class="mt-2 px-3 py-1 text-sm rounded-full border border-blue-600 text-white hover:bg-blue-600 hover:text-black">
+  <button 
+  onclick="openMovieDetails(${movie.id})"
+  class="mt-2 px-3 py-1 text-sm rounded-full border border-blue-600 text-white">
   View Details
-
-            </button>
-
+</button>
           </div>
 
         </div>
@@ -345,6 +343,6 @@ getMovieList(
 
 ///save id and redirect function
 function openMovieDetails(id) {
-  localStorage.setItem("movieId", id);
-  window.location.href = "movie_detail.html";
+
+  window.location.href = `movie_detail.html?id=${id}`;
 }
